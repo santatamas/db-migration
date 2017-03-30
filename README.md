@@ -3,7 +3,7 @@
 # alter TEST_SCHEMA, so flyway can do anything in it
 alter user TEST_SCHEMA quota unlimited on USERS
 
-#specify dump directory object in Oracle, which points to a physical dir
+# specify dump directory object in Oracle, which points to a physical dir
 CREATE OR REPLACE DIRECTORY dmpdir AS '/u01/app/oracle/oradata/dmpdir';
 GRANT READ, WRITE ON DIRECTORY dmpdir TO system;
 
