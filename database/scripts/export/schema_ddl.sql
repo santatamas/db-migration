@@ -10,7 +10,7 @@ set heading off
 
 column DDL Format a100
 
-spool schema_ddl.csv
+spool /u01/app/oracle/schema_ddl.csv
 
 SELECT OBJECT_TYPE, OBJECT_NAME,DBMS_METADATA.GET_DDL(OBJECT_TYPE, OBJECT_NAME, OWNER) as DDL
   FROM ALL_OBJECTS
