@@ -3,7 +3,8 @@ services:
   oracle:
     image: sath89/oracle-12c:latest
     volumes:
-      - ./database:/u01/app/oracle # persistent oracle database data.
+      - ./database:/u01/app/oracle        # persistent oracle database data.
+      - ./scripts:/u01/app/oracle/scripts # setup and migration scripts
     ports:
       - 1521:1521
       - 8080:8080
