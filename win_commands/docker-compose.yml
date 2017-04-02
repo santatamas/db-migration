@@ -1,0 +1,29 @@
+version: '3'
+services:
+  oracle:
+    image: sath89/oracle-12c:latest
+    volumes:
+      - ./database:/u01/app/oracle        # persistent oracle database data.
+     # - ./scripts:/u01/app/oracle/scripts # setup and migration scripts
+    ports:
+      - 1521:1521
+      - 8080:8080
+      - 5500:5500
+    container_name: oracle
+  #database_2:
+  #  image: microsoft/mssql-server-linux
+  #  ports:
+  #    - 1433:1433
+  #  environment:
+  #    - ACCEPT_EULA=Y
+  #    - SA_PASSWORD=Welcome123
+  #  container_name: mssql
+  flyway:
+    depends_on: ["oracle"]
+    image: jyore/flyway
+    volumes:
+      - ./conf:/flyway/conf
+      - ./jars:/flyway/jars
+      - ./sql/migration:/flyway/sql
+    container_name: flyway
+    #command: ["/bin/sh","-c","cd /usr/src/app/hti; npm start"]
